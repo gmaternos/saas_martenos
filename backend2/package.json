@@ -1,0 +1,22 @@
+{
+  "name": "guias-maternos-api",
+  "version": "1.0.0",
+  "description": "Backend API para a plataforma Guias Maternos",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "bcryptjs": "^2.4.3",
+    "firebase-admin": "^10.0.0"
+  },
+  "engines": {
+    "node": "16.x"
+  }
+}
