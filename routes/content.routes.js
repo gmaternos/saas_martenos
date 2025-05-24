@@ -1,14 +1,23 @@
 const express = require('express');
 const router = express.Router();
-const contentController = require('../controllers/content.controller');
 const authMiddleware = require('../middleware/auth.middleware');
 
-// Rotas públicas
-router.get('/search', contentController.searchContent);
-router.get('/:slug', contentController.getContentBySlug);
+// Funções temporárias para as rotas de conteúdo
+const getAllContent = (req, res) => {
+  res.status(200).json({ message: "Lista de conteúdos (função temporária)", content: [] });
+};
 
-// Rotas protegidas
-router.get('/recommended', authMiddleware.verifyToken, contentController.getRecommendedContent);
-router.post('/:contentId/rate', authMiddleware.verifyToken, contentController.rateContent);
+const getContentById = (req, res) => {
+  res.status(200).json({ message: "Detalhes do conteúdo (função temporária)", id: req.params.id });
+};
+
+const rateContent = (req, res) => {
+  res.status(200).json({ message: "Avaliação registrada (função temporária)", data: req.body });
+};
+
+// Rotas de conteúdo
+router.get('/', getAllContent);
+router.get('/:id', getContentById);
+router.post('/:id/rate', authMiddleware.verifyToken, rateContent);
 
 module.exports = router;
