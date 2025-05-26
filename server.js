@@ -93,3 +93,7 @@ if (process.env.NODE_ENV !== 'test') {
 
 // Exportar app para testes
 module.exports = app;
+
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log('Conectado ao MongoDB Atlas com sucesso!'))
+  .catch(err => console.error('Erro ao conectar ao MongoDB Atlas:', err));
