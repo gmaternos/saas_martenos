@@ -8,12 +8,14 @@ const morgan = require('morgan');
 
 // Importar rotas
 const authRoutes = require('./src/routes/auth');
-const userRoutes = require('./src/routes/users');
+// Removida a importação de userRoutes que não existe
 const childrenRoutes = require('./src/routes/children');
 const contentRoutes = require('./src/routes/content');
 const calendarRoutes = require('./src/routes/calendar');
 const developmentRoutes = require('./src/routes/development');
 const communityRoutes = require('./src/routes/community');
+const eventsRoutes = require('./src/routes/events');
+const commentsRoutes = require('./src/routes/comments');
 
 // Inicializar app
 const app = express();
@@ -28,12 +30,14 @@ app.use(express.urlencoded({ extended: true }));
 
 // Rotas da API
 app.use('/api/auth', authRoutes);
-app.use('/api/users', userRoutes);
+// Removida a rota de users que não existe
 app.use('/api/children', childrenRoutes);
 app.use('/api/content', contentRoutes);
 app.use('/api/calendar', calendarRoutes);
 app.use('/api/development', developmentRoutes);
 app.use('/api/community', communityRoutes);
+app.use('/api/events', eventsRoutes);
+app.use('/api/comments', commentsRoutes);
 
 // Rota de saúde
 app.get('/health', (req, res) => {
@@ -93,7 +97,3 @@ if (process.env.NODE_ENV !== 'test') {
 
 // Exportar app para testes
 module.exports = app;
-
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('Conectado ao MongoDB Atlas com sucesso!'))
-  .catch(err => console.error('Erro ao conectar ao MongoDB Atlas:', err));
